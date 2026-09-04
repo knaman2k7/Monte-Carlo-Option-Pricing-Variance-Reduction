@@ -109,3 +109,24 @@ As the graph implies, at very small simulation sizes, the Monte Carlo estimate v
 The logarthmic x-axis make the large range of simulation sizes visible on a single plot.
 
 
+### 3.3 - Pricing Error vs Number of Simulations
+
+![postively skewed price distrubution](PricingErrorAgainstN.png)
+
+To reduce the effect of randomness from individual Monte Carlo runs, each simulation size was iterated 20 times and the mean absolute pricing error was calculated.
+
+Fitting a power-law relationship between simulation size and mean absolute error produced:
+
+```math
+E(N) = 13.603 N ^ {-0.512}
+```
+
+The fitted exponent of −0.512 is close to the theoretical Monte Carlo convergence rate of −0.5, providing empirical evidence for the expected convergence behaviour of:
+
+```math
+O(N^{-1/2})
+```
+
+The log-log relationship produced a correlation coefficient of -0.9605, indicating a strong negative relationship between simulation size and pricing error.
+
+
