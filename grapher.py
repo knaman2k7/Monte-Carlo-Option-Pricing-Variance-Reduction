@@ -18,7 +18,9 @@ simulationSizes = np.array([
     10000,
     100000,
     1000000,
-    10000000
+    10000000,
+    100000000,
+    1000000000
 ])
 
 simulatedPrices = []
@@ -26,6 +28,12 @@ simulatedPrices = []
 for n in simulationSizes:
     price = estimateOptionPrice(S, K, r, t, sigma, "call", n)
     simulatedPrices.append(price)
+
+a = np.array(simulatedPrices)
+b = (a-blackScholesPrice) / blackScholesPrice
+
+for i in range(len(b)):
+    print(f"({simulationSizes[i]},{b[i]*100})")
 
 plt.plot(
     simulationSizes,
