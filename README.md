@@ -137,13 +137,13 @@ The log-log relationship produced a correlation coefficient of -0.9605, indicati
 Standard Monte Carlo generates independent random shocks Z. Antithetic sampling instead pairs each random draw with its negative, Z and -Z,
 producing negatively related simulated outcomes. Averaging the paired payoffs can reduce the variance of the estimator without requiring an equivalent increase in random sampling.
 
-Both sampling standards retained convergence rates close to ```math O(N^{-1/2}) ``` However, antithetic sampling generally produced a lower mean absolute error for the same simulation size. This is consisten with variance reduction improving effeciency of the estimator without changing the fundamental convergence rate of the Monte Carlo simulation.
+Both sampling standards retained convergence rates close to $O(N^{-1/2})$ However, antithetic sampling generally produced a lower mean absolute error for the same simulation size. This is consisten with variance reduction improving effeciency of the estimator without changing the fundamental convergence rate of the Monte Carlo simulation.
 
 
 ## 4 - Key Findings
 
 - Monte Carlo option prices converged towards the analytical Black-Scholes price as the number of simulations increased
-- Mean absolute pricing error followed the theoretical ```math O(N^{-1/2}) ``` monte carlo convergence rate
-- Antithetic variates reduced pricing error for a given simulation budget while preserving the expected ```math O(N^{-1/2}) ``` convergence
+- Mean absolute pricing error followed the theoretical $O(N^{-1/2})$ monte carlo convergence rate
+- Antithetic variates reduced pricing error for a given simulation budget while preserving the expected $O(N^{-1/2})$ convergence
 
 
