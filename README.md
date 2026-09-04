@@ -9,7 +9,7 @@ the two approaches and how the accuracy of Monte Carlo pricing changes as the nu
 As the project develops, I also plan to explore methods for improving the efficiency and accuracy of the simulation.
 
 
-![alt text](image.png)
+![alt text](plots/image.png)
 
 (10,31.27582560288887)
 (100,-5.4060472985632275)
@@ -22,4 +22,4 @@ As the project develops, I also plan to explore methods for improving the effici
 (1000000000,0.001145115010542623)
 
 
-![alt text](image2.png)
+![alt text](plots/image2.png)
