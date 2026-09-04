@@ -11,41 +11,26 @@ sigma = 0.2
 
 blackScholesPrice = calculateCallPrice(S, K, r, t, sigma)
 
-simulationSizes = np.array([
-    10,
-    100,
-    1000,
-    10000,
-    100000,
-    1000000,
-    10000000,
-    100000000,
-    1000000000
-])
-
+simulationSizes = np.arange(20000, 1000001, 10000)
 simulatedPrices = []
 
 for n in simulationSizes:
-    price = estimateOptionPrice(S, K, r, t, sigma, "call", n)
-    simulatedPrices.append(price)
+    simulatedPrices.append( estimateOptionPrice(S,K,r,t,sigma,"call",n) )
+
+
+#for n in simulationSizes:
+#    price = estimateOptionPrice(S, K, r, t, sigma, "call", n)
+#    simulatedPrices.append(price)
 
 a = np.array(simulatedPrices)
-b = (a-blackScholesPrice) / blackScholesPrice
+b = np.abs(blackScholesPrice - a)
 
-for i in range(len(b)):
-    print(f"({simulationSizes[i]},{b[i]*100})")
 
-plt.plot(
-    simulationSizes,
-    simulatedPrices,
-    marker="o",
-    label="Monte Carlo"
-)
-plt.axhline(blackScholesPrice, label="Black-Scholes")
+plt.plot(simulationSizes, b)
 
-plt.xscale("log")
 plt.xlabel("Number of simulations")
-plt.ylabel("Option price")
-plt.legend()
+plt.ylabel("absolute error")
+plt.ticklabel_format(axis="x", style="plain", useOffset=False)
+plt.title("Monte Carlo Convergence to the Black-Scholes Price")
 
 plt.show()

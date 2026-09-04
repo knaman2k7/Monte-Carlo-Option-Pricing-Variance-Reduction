@@ -20,3 +20,6 @@ As the project develops, I also plan to explore methods for improving the effici
 (10000000,0.030263204142592655)
 (100000000,-0.011721576562296932)
 (1000000000,0.001145115010542623)
+
+
+![alt text](image2.png)
