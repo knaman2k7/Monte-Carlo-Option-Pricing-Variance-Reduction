@@ -9,79 +9,78 @@ The Black-Scholes model provides a closed-form solution for European Option pric
 This project uses the black-scholes price as a benchmark to investigate relations between pricing accuracy with number of simulations. I then implement antithetic variates to investigate whether the estimate's variance can be reduced in the same simulation budget.
 
 
-##Mathematical Background
+## Mathematical Background
 
-Black-Scholes Price
+### Black-Scholes Price
 
-For a European call option, the Black-Scholes price is
+For a European call option, the Black-Scholes price is:
 
-[
+```math
 C = S_0N(d_1) - Ke^{-rT}N(d_2)
-]
+```
 
-where
+where:
 
-[
-d_1 = \frac{\ln(S_0/K) + (r + \frac{1}{2}\sigma^2)T}{\sigma\sqrt{T}},
-\qquad
-d_2 = d_1 - \sigma\sqrt{T}.
-]
+```math
+d_1 = \frac{\ln(S_0/K) + (r + \frac{1}{2}\sigma^2)T}{\sigma\sqrt{T}}
+```
+
+```math
+d_2 = d_1 - \sigma\sqrt{T}
+```
 
 This is used as the benchmark for the Monte Carlo estimates.
 
-Monte Carlo Simulation
+### Monte Carlo Simulation
 
-Under the Black-Scholes model, the stock price at expiry is
+The stock price at expiry is simulated using:
 
-[
-S_T = S_0\exp\left(\left(r-\frac{1}{2}\sigma^2\right)T+\sigma\sqrt{T}Z\right),
-]
+```math
+S_T = S_0\exp\left(\left(r-\frac{1}{2}\sigma^2\right)T+\sigma\sqrt{T}Z\right)
+```
 
-where
+where:
 
-[
-Z \sim N(0,1).
-]
+```math
+Z \sim N(0,1)
+```
 
-For a European call option, the payoff is
+For a European call option, the payoff is:
 
-[
-\max(S_T-K,0).
-]
+```math
+\max(S_T-K,0)
+```
 
-Using (N) simulations, the Monte Carlo price estimate is
+Using \(N\) simulations, the Monte Carlo estimate is:
 
-e^{-rT}
-\frac{1}{N}
-\sum_{i=1}^{N}
-\max(S_T^{(i)}-K,0).
-]
+```math
+\hat{C}_N = e^{-rT}\frac{1}{N}\sum_{i=1}^{N}\max(S_T^{(i)}-K,0)
+```
 
-Convergence
+### Convergence
 
-Monte Carlo error decreases approximately at the rate
+Monte Carlo error decreases approximately at the rate:
 
-[
-O(N^{-1/2}).
-]
+```math
+O(N^{-1/2})
+```
 
-Therefore, the absolute pricing error
+The absolute pricing error is:
 
-[
-|\hat{C}N-C{\text{BS}}|
-]
+```math
+|\hat{C}_N - C_{BS}|
+```
 
-should generally decrease as the number of simulations increases.
+### Antithetic Variates
 
-Antithetic Variates
+Antithetic variates use pairs of random values:
 
-Antithetic variates use pairs of random values
-
-[
-Z \quad \text{and} \quad -Z.
-]
+```math
+Z \quad \text{and} \quad -Z
+```
 
 These produce negatively related simulated outcomes, helping to reduce the variance of the Monte Carlo estimator.
+
 
 
 ![postively skewed price distrubution](plots/StockPriceDistrubution.png)
