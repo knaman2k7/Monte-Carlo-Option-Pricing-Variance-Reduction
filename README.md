@@ -103,7 +103,7 @@ The simulated terminal stock prices form a positively skewed distrubution, as ex
 
 ### 3.2 - Convergence to Black-Scholes
 
-![postively skewed price distrubution](plots/priceConvergence.png)
+![](plots/priceConvergence.png)
 
 As the graph implies, at very small simulation sizes, the Monte Carlo estimate varies substantially from the Black-Scholes benchmark. As the number of simulations increases, the estimate stabilises increasingly close to the analytical price.
 The logarthmic x-axis make the large range of simulation sizes visible on a single plot.
@@ -111,7 +111,7 @@ The logarthmic x-axis make the large range of simulation sizes visible on a sing
 
 ### 3.3 - Pricing Error vs Number of Simulations
 
-![postively skewed price distrubution](PricingErrorAgainstN.png)
+![](plots/PricingErrorAgainstN.png)
 
 To reduce the effect of randomness from individual Monte Carlo runs, each simulation size was iterated 20 times and the mean absolute pricing error was calculated.
 
@@ -128,5 +128,22 @@ O(N^{-1/2})
 ```
 
 The log-log relationship produced a correlation coefficient of -0.9605, indicating a strong negative relationship between simulation size and pricing error.
+
+
+### 3.4 - Antithetic Variates
+
+![](plots/standardVsAntithetic.png)
+
+Standard Monte Carlo generates independent random shocks Z. Antithetic sampling instead pairs each random draw with its negative, Z and -Z,
+producing negatively related simulated outcomes. Averaging the paired payoffs can reduce the variance of the estimator without requiring an equivalent increase in random sampling.
+
+Both sampling standards retained convergence rates close to ```math O(N^{-1/2}) ``` However, antithetic sampling generally produced a lower mean absolute error for the same simulation size. This is consisten with variance reduction improving effeciency of the estimator without changing the fundamental convergence rate of the Monte Carlo simulation.
+
+
+## 4 - Key Findings
+
+- Monte Carlo option prices converged towards the analytical Black-Scholes price as the number of simulations increased
+- Mean absolute pricing error followed the theoretical ```math O(N^{-1/2}) ``` monte carlo convergence rate
+- Antithetic variates reduced pricing error for a given simulation budget while preserving the expected ```math O(N^{-1/2}) ``` convergence
 
 
