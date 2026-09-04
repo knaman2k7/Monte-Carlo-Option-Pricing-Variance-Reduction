@@ -23,3 +23,5 @@ As the project develops, I also plan to explore methods for improving the effici
 
 
 ![alt text](plots/image2.png)
+
+![alt text](plots/image.png)
