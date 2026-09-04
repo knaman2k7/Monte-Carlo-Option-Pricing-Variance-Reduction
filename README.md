@@ -8,3 +8,4 @@ the two approaches and how the accuracy of Monte Carlo pricing changes as the nu
 
 As the project develops, I also plan to explore methods for improving the efficiency and accuracy of the simulation.
 
+!(plots/StockPriceDistrubution.png)
